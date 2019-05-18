@@ -290,17 +290,16 @@ w = X\trn;
 % cr = (inv(w*w')*w*tst')'; 
 cr = (w.'\tst.').';
 
-%% then shift the rows - if using xform then shift by -1 so that its 
-% easier to see the entire function and the dip is more in the middle
+%% then shift the rows to recenter channel response profiles
 
 % apply inverse transform before circ shifting? 
 if use_xform==1 && inverse_before_shift==1
     cr = cr * inv(mix_mat); 
 end
 
-% figure out how much to shift each function by to 'center' it (although
+% figure out how much to shift each profile by to 'center' it (although
 % with xformed basis, not really sure so much where the center is anymore,
-% but can shift it anyway to a common center at least). 
+% but can shift it anyway to a common point at least). 
 shiftby = (nf/2)+1;
 
 % do the shifting
